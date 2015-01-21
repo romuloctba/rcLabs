@@ -73,3 +73,16 @@ gulp.task('inject',['lib','bower', 'stylus', 'js'], function(){
 })
 ```
 
+- [i18next-parser](https://www.npmjs.com/package/i18next-parser) Gerador automático de chaves para tradução
+
+```javascript
+gulp.task('i18next', function() {
+    gulp.src('app/**')
+        .pipe(i18next({
+            locales: ['en', 'de'],
+            functions: ['__', '_e'],
+            output: '../locales'
+        }))
+        .pipe(gulp.dest('locales'));
+});
+```
