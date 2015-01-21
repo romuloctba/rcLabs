@@ -2,7 +2,21 @@
 
 Ferramentas para [GulpJS](http://gulpjs.com)
 
-Lista de repos:
+## Algumas cores
+
+Cores para output de mensagens (sim, existem modulos para isso)
+```javascript
+var azul = '\x1b[1m\x1b[36m';
+var verde = '\x1b[32m';
+var blanco = "\x1b[37m";
+var bgNegro =  "\x1b[40m";
+var rojo = "\x1b[31m";
+var brilho = "\x1b[1m";
+var bgVerde="\x1b[42m"
+var nocolor = "\x1b[0m";
+```
+
+## Lista de repos:
 
 - [connect-multi](https://www.npmjs.com/package/gulp-connect-multi) Server, livereload
   
@@ -36,9 +50,10 @@ Lista de repos:
   return gulp.src(bowerFiles())
     .pipe(gulp.dest('./build/lib/bowerfiles'))
     .pipe(connect.reload());
-})```
+})
+```
 
-- [gulp-inject](https://www.npmjs.com/package/gulp-inject) + [stream-series](https://www.npmjs.com/package/stream-series) Inject injeta em arquivos .html. Stream-series concatena as streams (gulp.src()'s') para serem injetadas.
+- [gulp-inject](https://www.npmjs.com/package/gulp-inject) + [stream-series](https://www.npmjs.com/package/stream-series) Inject injeta em arquivos .html. Stream-series concatena as streams (gulp.src()'s') para serem injetadas. -> TASKS PREPARATORIAS DEVEM SER DECLARADAS COMO DEPENDENCIAS, CONFORME EXEMPLO
 
 ```javascript
 gulp.task('inject',['lib','bower', 'stylus', 'js'], function(){
@@ -56,3 +71,4 @@ gulp.task('inject',['lib','bower', 'stylus', 'js'], function(){
 
 })
 ```
+
