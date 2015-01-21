@@ -17,4 +17,25 @@ Lista de repos:
   }
 }));```
 
-- [gulp-stylus](https://www.npmjs.com/package/gulp-stylus)
+
+- [gulp-stylus](https://www.npmjs.com/package/gulp-stylus) Pega arquivos .styl e compila em .css para a /build
+
+  ex:
+  ```javascript
+	gulp.task('stylus',function(){
+  gulp.src('./src/stylus/*.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('./build/css'))
+    .pipe(connect.reload());
+});
+  ```
+
+- [main-bower-files](https://www.npmjs.com/package/main-bower-files) pega os arquivos principais do pacote bower. Exige override caso os principais não funcionem automaticamente. Neste caso, recomendo usar a pasta /lib
+
+  ex:
+  ```javascript
+	gulp.task('bower', function(){
+  return gulp.src(bowerFiles())
+    .pipe(gulp.dest('./build/lib/base'))
+    .pipe(connect.reload());
+})```
