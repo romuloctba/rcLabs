@@ -6,15 +6,16 @@ Ferramentas para [GulpJS](http://gulpjs.com)
 
 Cores para output de mensagens (sim, existem modulos para isso)
 ```javascript
-var azul = '\x1b[1m\x1b[36m';
-var verde = '\x1b[32m';
-var blanco = "\x1b[37m";
-var bgNegro =  "\x1b[40m";
-var rojo = "\x1b[31m";
-var brilho = "\x1b[1m";
-var bgVerde="\x1b[42m"
-var nocolor = "\x1b[0m";
+var azul = "\x1b[1m\x1b[36m"
+	, verde = "\x1b[32m"
+	, branco = "\x1b[37m"
+	, bgPreto =  "\x1b[40m"
+	, vermelho = "\x1b[31m"
+	, brilho = "\x1b[1m"
+	, bgVerde="\x1b[42m"
+	, nocolor = "\x1b[0m";
 ```
+exemplo: ```console.log(bgPreto+vermelho+"Este texto está vermelho com fundo preto"+nocolor);
 
 ## Lista de repos:
 
