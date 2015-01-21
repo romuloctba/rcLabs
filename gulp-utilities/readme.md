@@ -15,7 +15,8 @@ Lista de repos:
   open: {
     browser: 'chrome' // if not working OS X browser: 'Google Chrome'
   }
-}));```
+}));
+```
 
 
 - [gulp-stylus](https://www.npmjs.com/package/gulp-stylus) Pega arquivos .styl e compila em .css para a /build
