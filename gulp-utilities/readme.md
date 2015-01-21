@@ -5,8 +5,8 @@ Ferramentas para [GulpJS](http://gulpjs.com)
 Lista de repos:
 
 - [connect-multi](https://www.npmjs.com/package/gulp-connect-multi) Server, livereload
-  ex: ```
-  gulp.task('serve', connect.server({
+  ex:
+  ```gulp.task('serve', connect.server({
   root: ['build'],
   port: 1337,
   livereload: true,
