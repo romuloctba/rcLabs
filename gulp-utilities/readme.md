@@ -15,7 +15,7 @@ var azul = "\x1b[1m\x1b[36m"
 	, bgVerde="\x1b[42m"
 	, nocolor = "\x1b[0m";
 ```
-exemplo: ```console.log(bgPreto+vermelho+"Este texto está vermelho com fundo preto"+nocolor);
+exemplo: ```console.log(bgPreto+vermelho+"Este texto está vermelho com fundo preto"+nocolor);```
 
 ## Lista de repos:
 
