@@ -44,6 +44,7 @@ gulp.task('serve', connect.server({
     browser: 'chrome' //OS X browser: 'Google Chrome'
   }
 }));
+
 gulp.task('watch', function () {
   gulp.watch(['./src/**.html'], ['inject']);
   gulp.watch(['./src/js/**.js'], ['js']);
@@ -51,7 +52,8 @@ gulp.task('watch', function () {
   gulp.watch([bowerFiles()], ['bower','js']);
   gulp.watch(['./src/stylus/**.styl'], ['stylus']);
 });
-gulp.task('inject',['bower', 'lib', 'stylus', 'js'], function(){
+
+gulp.task('inject', function(){
   var bowerz = gulp.src('./build/lib/vendor/**');
   var lib = gulp.src('./build/lib/**/*.*');
   var customCSS = gulp.src('./build/css/**.css');
@@ -64,4 +66,9 @@ gulp.task('inject',['bower', 'lib', 'stylus', 'js'], function(){
     .pipe(gulp.dest('./build'))
     .pipe(connect.reload());
 })
-gulp.task('default', ['inject', 'serve', 'watch']);
+
+gulp.task('firstInject',['bower', 'lib', 'stylus', 'js', 'inject'], function(){
+  console.log(bgVerde+vermelho+brilho+'Wellcome home, professor. Have a nice work.'+nocolor);
+  console.log(bgVerde+vermelho+brilho+'Seja bem vindo. Bom trabalho.'+nocolor);
+})
+gulp.task('default', ['firstInject', 'serve', 'watch']);
