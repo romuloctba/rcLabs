@@ -5,6 +5,16 @@ var bowerFiles = require('main-bower-files'),
     series = require('stream-series'),
     connect = require('gulp-connect-multi')();
 
+//cores
+var azul = '\x1b[1m\x1b[36m'
+  , verde = '\x1b[32m'
+  , branco = "\x1b[37m"
+  , bgPreto =  "\x1b[40m"
+  , vermelho = "\x1b[31m"
+  , brilho = "\x1b[1m"
+  , bgVerde="\x1b[42m"
+  , nocolor = "\x1b[0m";
+
 
 gulp.task('bower', function(){
   return gulp.src(bowerFiles())
