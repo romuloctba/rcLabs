@@ -8,12 +8,12 @@ var bowerFiles = require('main-bower-files'),
 
 gulp.task('bower', function(){
   return gulp.src(bowerFiles())
-    .pipe(gulp.dest('./build/lib/base'))
+    .pipe(gulp.dest('./build/lib/vendor'))
     .pipe(connect.reload());
 })
 gulp.task('lib', function(){
-	return gulp.src('./src/lib/**/*.*', { base: './src/'})
-	.pipe(gulp.dest('./build'))
+  return gulp.src('./src/lib/**/*.*', { vendor: './src/'})
+    .pipe(gulp.dest('./build'))
 })
 gulp.task('stylus',function(){
   gulp.src('./src/stylus/*.styl')
@@ -26,21 +26,6 @@ gulp.task('js',function(){
     .pipe(gulp.dest('./build/js'))
     .pipe(connect.reload());
 });
-gulp.task('inject',['lib', 'stylus', 'js'], function(){
-  
-  var bowerz = gulp.src('./build/lib/base/**');
-  var libCss = gulp.src('./build/lib/**.css');
-  var libJs = gulp.src('./build/lib/**.js');
-  var customCSS = gulp.src('./build/css/**.css');
-  var customJs = gulp.src('./build/js/**.js');
-  var sources = series(libCss, libJs, customCSS, customJs)
-
-  gulp.src('./src/**.html')
-  	.pipe(inject(bowerz, { relative: true, ignorePath: '../build', starttag: '<!-- bower:{{ext}} -->'  }))
-    .pipe(inject(sources, { relative: true, ignorePath: '../build/' }))
-    .pipe(gulp.dest('./build'))
-    .pipe(connect.reload());
-})
 gulp.task('serve', connect.server({
   root: ['build'],
   port: 1337,
@@ -55,4 +40,17 @@ gulp.task('watch', function () {
   gulp.watch([bowerFiles()], ['bower','js']);
   gulp.watch(['./src/stylus/**.styl'], ['stylus']);
 });
+gulp.task('inject',['bower', 'lib', 'stylus', 'js'], function(){
+  var bowerz = gulp.src('./build/lib/vendor/**');
+  var libCss = gulp.src('./build/lib/**.css');
+  var libJs = gulp.src('./build/lib/**.js');
+  var customCSS = gulp.src('./build/css/**.css');
+  var customJs = gulp.src('./build/js/**.js');
+  var sources = series(libCss, libJs, customCSS, customJs)
+  gulp.src('./src/**.html')
+    .pipe(inject(bowerz, { relative: true, ignorePath: '../build', starttag: '<!-- bower:{{ext}} -->'  }))
+    .pipe(inject(sources, { relative: true, ignorePath: '../build/' }))
+    .pipe(gulp.dest('./build'))
+    .pipe(connect.reload());
+})
 gulp.task('default', ['inject', 'serve', 'watch']);
